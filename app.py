@@ -6,6 +6,9 @@ from controllers.main_window import TextEditWindow
 
 
 if __name__=="__main__":
+    """
+    this execute the app
+    """
     app=QApplication(sys.argv)
     translator = QTranslator(app)
     if translator.load("qt_"+QLocale.system().name()+".qm", QLibraryInfo.location(QLibraryInfo.TranslationsPath)):

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>main_window &mdash; TextEdit 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> TextEdit
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">docs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TextEdit</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Module code</a> &raquo;</li>
+      <li>main_window</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for main_window</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">markdown</span>
+<span class="kn">from</span> <span class="nn">PySide2.QtCore</span> <span class="kn">import</span> <span class="p">(</span><span class="n">QCoreApplication</span><span class="p">,</span> <span class="n">QDir</span><span class="p">,</span> <span class="n">QFile</span><span class="p">,</span> <span class="n">QFileInfo</span><span class="p">,</span> <span class="n">QMimeData</span><span class="p">,</span>
+                            <span class="n">QMimeDatabase</span><span class="p">,</span> <span class="n">QUrl</span><span class="p">,</span> <span class="n">Qt</span><span class="p">,</span> <span class="n">Slot</span><span class="p">,</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">QIODevice</span><span class="p">,</span> <span class="n">QTranslator</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">PySide2.QtGui</span> <span class="kn">import</span> <span class="p">(</span> <span class="n">QGuiApplication</span><span class="p">,</span> <span class="n">QClipboard</span><span class="p">,</span>
+                           <span class="n">QCloseEvent</span><span class="p">,</span> <span class="n">QFont</span><span class="p">,</span> <span class="n">QFontDatabase</span><span class="p">,</span> <span class="n">QFontInfo</span><span class="p">,</span> <span class="n">QIcon</span><span class="p">,</span>
+                           <span class="n">QKeySequence</span><span class="p">,</span> <span class="n">QPixmap</span><span class="p">,</span> <span class="n">QTextBlockFormat</span><span class="p">,</span>
+                           <span class="n">QTextCharFormat</span><span class="p">,</span> <span class="n">QTextCursor</span><span class="p">,</span> <span class="n">QTextDocumentWriter</span><span class="p">,</span>
+                           <span class="n">QTextList</span><span class="p">,</span> <span class="n">QTextListFormat</span><span class="p">,</span> <span class="n">QTextDocument</span> <span class="p">)</span>
+<span class="kn">from</span> <span class="nn">PySide2.QtWidgets</span> <span class="kn">import</span> <span class="p">(</span><span class="n">QApplication</span><span class="p">,</span> <span class="n">QMainWindow</span><span class="p">,</span> <span class="n">QColorDialog</span><span class="p">,</span> <span class="n">QComboBox</span><span class="p">,</span>
+                               <span class="n">QDialog</span><span class="p">,</span> <span class="n">QFileDialog</span><span class="p">,</span> <span class="n">QFontComboBox</span><span class="p">,</span> <span class="n">QStatusBar</span><span class="p">,</span> <span class="n">QAction</span><span class="p">,</span> <span class="n">QActionGroup</span><span class="p">,</span>
+                               <span class="n">QTextEdit</span><span class="p">,</span> <span class="n">QToolBar</span><span class="p">,</span> <span class="n">QMenu</span><span class="p">,</span> <span class="n">QMenuBar</span><span class="p">,</span> <span class="n">QMessageBox</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QSplitter</span><span class="p">,</span> <span class="n">QFrame</span><span class="p">,</span> <span class="n">QHBoxLayout</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">PySide2.QtWebEngineWidgets</span> <span class="kn">import</span> <span class="n">QWebEngineView</span>
+<span class="c1">#MIRAR EL WEBVIEW</span>
+<span class="kn">from</span> <span class="nn">PySide2.QtPrintSupport</span> <span class="kn">import</span> <span class="p">(</span><span class="n">QAbstractPrintDialog</span><span class="p">,</span> <span class="n">QPrinter</span><span class="p">,</span>
+                                    <span class="n">QPrintDialog</span><span class="p">,</span> <span class="n">QPrintPreviewDialog</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">view_main_window</span> <span class="kn">import</span> <span class="n">TextEdit</span>
+
+<span class="n">ABOUT</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s2">&quot;&quot;&quot;&lt;p&gt;This is a markdown text editor with preview. The</span>
+<span class="s2">                     uploaded or created files can be saved in different formats </span>
+<span class="s2">                     such as HTML. If you want to know more about markdown here is a link about it:&lt;/p&gt;</span>
+<span class="s2">                     &lt;a href =https://www.markdownguide.org/basic-syntax/#html&gt;Markdown Guide&lt;/a&gt; &quot;&quot;&quot;</span><span class="p">])</span>
+
+
+<span class="n">MIME_TYPES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;text/html&quot;</span><span class="p">,</span> <span class="s2">&quot;text/markdown&quot;</span><span class="p">,</span> <span class="s2">&quot;text/plain&quot;</span><span class="p">]</span> <span class="c1">#para guardarlo de esos tipos</span>
+
+
+
+
+
+
+<div class="viewcode-block" id="TextEditWindow"><a class="viewcode-back" href="../main_window.html#main_window.TextEditWindow">[docs]</a><span class="k">class</span> <span class="nc">TextEditWindow</span><span class="p">(</span><span class="n">QMainWindow</span><span class="p">,</span> <span class="n">TextEdit</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span> <span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setupUi</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="n">QCoreApplication</span><span class="o">.</span><span class="n">applicationName</span><span class="p">())</span><span class="c1">#el titulo de la app</span>
+
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_text_edit</span><span class="o">.</span><span class="n">setFrameShape</span><span class="p">(</span><span class="n">QFrame</span><span class="o">.</span><span class="n">StyledPanel</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_text_edit</span><span class="o">.</span><span class="n">textChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">onTextChanged</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">preview</span><span class="o">.</span><span class="n">setHtml</span><span class="p">(</span><span class="s2">&quot;start typing on the left pane&quot;</span><span class="p">)</span>
+        
+        
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">setToolButtonStyle</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">ToolButtonFollowStyle</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setup_file_actions</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setup_edit_actions</span><span class="p">()</span>
+
+        <span class="n">about</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">actionAbout</span>
+        <span class="n">about</span><span class="o">.</span><span class="n">triggered</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">about</span><span class="p">)</span>
+
+        
+
+        <span class="n">document</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text_edit</span><span class="o">.</span><span class="n">document</span><span class="p">()</span>
+        <span class="n">document</span><span class="o">.</span><span class="n">modificationChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actionSave</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">)</span>
+        <span class="n">document</span><span class="o">.</span><span class="n">modificationChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">setWindowModified</span><span class="p">)</span>
+        <span class="n">document</span><span class="o">.</span><span class="n">undoAvailable</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actionUndo</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">)</span>
+        <span class="n">document</span><span class="o">.</span><span class="n">redoAvailable</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actionRedo</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setWindowModified</span><span class="p">(</span><span class="n">document</span><span class="o">.</span><span class="n">isModified</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionSave</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="n">document</span><span class="o">.</span><span class="n">isModified</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionUndo</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="n">document</span><span class="o">.</span><span class="n">isUndoAvailable</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionRedo</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="n">document</span><span class="o">.</span><span class="n">isRedoAvailable</span><span class="p">())</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionCut</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_text_edit</span><span class="o">.</span><span class="n">copyAvailable</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actionCut</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionCopy</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_text_edit</span><span class="o">.</span><span class="n">copyAvailable</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actionCopy</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">)</span>
+
+        <span class="n">QGuiApplication</span><span class="o">.</span><span class="n">clipboard</span><span class="p">()</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clipboard_data_changed</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_text_edit</span><span class="o">.</span><span class="n">setFocus</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_current_file_name</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+        
+        
+<div class="viewcode-block" id="TextEditWindow.onTextChanged"><a class="viewcode-back" href="../main_window.html#main_window.TextEditWindow.onTextChanged">[docs]</a>    <span class="k">def</span> <span class="nf">onTextChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>       
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">html</span> <span class="o">=</span> <span class="n">markdown</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text_edit</span><span class="o">.</span><span class="n">toPlainText</span><span class="p">())</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">html</span> <span class="o">=</span> <span class="n">QCoreApplication</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="s1">&#39;Error decoding &#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">preview</span><span class="o">.</span><span class="n">setHtml</span><span class="p">(</span><span class="n">html</span><span class="p">)</span></div>
+        
+<div class="viewcode-block" id="TextEditWindow.closeEvent"><a class="viewcode-back" href="../main_window.html#main_window.TextEditWindow.closeEvent">[docs]</a>    <span class="k">def</span> <span class="nf">closeEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">maybe_save</span><span class="p">():</span>
+            <span class="n">e</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">e</span><span class="o">.</span><span class="n">ignore</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TextEditWindow.setup_file_actions"><a class="viewcode-back" href="../main_window.html#main_window.TextEditWindow.setup_file_actions">[docs]</a>    <span class="k">def</span> <span class="nf">setup_file_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">menu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menuFile</span>
+
+        <span class="n">new</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">actionNew</span>
+        <span class="n">new</span><span class="o">.</span><span class="n">triggered</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_new</span><span class="p">)</span>
+        <span class="n">new</span><span class="o">.</span><span class="n">setPriority</span><span class="p">(</span><span class="n">QAction</span><span class="o">.</span><span class="n">LowPriority</span><span class="p">)</span>
+
+        <span class="nb">open</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">actionOpen</span>
+        <span class="nb">open</span><span class="o">.</span><span class="n">triggered</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_open</span><span class="p">)</span>
+
+        <span class="n">save</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">actionSave</span>
+        <span class="n">save</span><span class="o">.</span><span class="n">triggered</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_save</span><span class="p">)</span>
+        <span class="n">save</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        
+        <span class="n">saveAs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">actionSave_As</span>
+        <span class="n">saveAs</span><span class="o">.</span><span class="n">triggered</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_save_as</span><span class="p">)</span>
+        <span class="n">saveAs</span><span class="o">.</span><span class="n">setPriority</span><span class="p">(</span><span class="n">QAction</span><span class="o">.</span><span class="n">LowPriority</span><span class="p">)</span>
+        
+        <span class="n">quit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">actionQuit</span>
+        <span class="n">quit</span><span class="o">.</span><span class="n">triggered</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">)</span>
+
+        <span class="n">menu</span><span class="o">.</span><span class="n">addSeparator</span><span class="p">()</span></div>
+        
+        
+
+<div class="viewcode-block" id="TextEditWindow.setup_edit_actions"><a class="viewcode-back" href="../main_window.html#main_window.TextEditWindow.setup_edit_actions">[docs]</a>    <span class="k">def</span> <span class="nf">setup_edit_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+       
+
+        <span class="n">undo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">actionUndo</span>
+        <span class="n">undo</span><span class="o">.</span><span class="n">triggered</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text_edit</span><span class="o">.</span><span class="n">undo</span><span class="p">)</span>
+        
+        <span class="n">redo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">actionRedo</span>
+        <span class="n">redo</span><span class="o">.</span><span class="n">triggered</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text_edit</span><span class="o">.</span><span class="n">redo</span><span class="p">)</span>
+        <span class="n">redo</span><span class="o">.</span><span class="n">setPriority</span><span class="p">(</span><span class="n">QAction</span><span class="o">.</span><span class="n">LowPriority</span><span class="p">)</span>
+    
+
+        <span class="n">cut</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">actionCut</span> 
+        <span class="n">cut</span><span class="o">.</span><span class="n">triggered</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text_edit</span><span class="o">.</span><span class="n">cut</span><span class="p">)</span>
+        <span class="n">cut</span><span class="o">.</span><span class="n">setPriority</span><span class="p">(</span><span class="n">QAction</span><span class="o">.</span><span class="n">LowPriority</span><span class="p">)</span>
+        
+        <span class="n">copy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">actionCopy</span>
+        <span class="n">copy</span><span class="o">.</span><span class="n">triggered</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text_edit</span><span class="o">.</span><span class="n">copy</span><span class="p">)</span>
+        <span class="n">copy</span><span class="o">.</span><span class="n">setPriority</span><span class="p">(</span><span class="n">QAction</span><span class="o">.</span><span class="n">LowPriority</span><span class="p">)</span>
+        
+
+        <span class="n">paste</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">actionPaste</span>
+        <span class="n">paste</span><span class="o">.</span><span class="n">triggered</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text_edit</span><span class="o">.</span><span class="n">paste</span><span class="p">)</span>
+        <span class="n">paste</span><span class="o">.</span><span class="n">setPriority</span><span class="p">(</span><span class="n">QAction</span><span class="o">.</span><span class="n">LowPriority</span><span class="p">)</span></div>
+        
+        
+
+    
+<div class="viewcode-block" id="TextEditWindow.load_file"><a class="viewcode-back" href="../main_window.html#main_window.TextEditWindow.load_file">[docs]</a>    <span class="k">def</span> <span class="nf">load_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">QFile</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="n">file</span> <span class="o">=</span> <span class="n">QFile</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">file</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">QFile</span><span class="o">.</span><span class="n">ReadOnly</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="n">data</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readAll</span><span class="p">()</span>
+        <span class="n">db</span> <span class="o">=</span> <span class="n">QMimeDatabase</span><span class="p">()</span>
+        <span class="n">mime_type_name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">mimeTypeForFileNameAndData</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">()</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">mime_type_name</span> <span class="o">==</span> <span class="s2">&quot;text/markdown&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_text_edit</span><span class="o">.</span><span class="n">setMarkdown</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_text_edit</span><span class="o">.</span><span class="n">setPlainText</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_current_file_name</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+<div class="viewcode-block" id="TextEditWindow.maybe_save"><a class="viewcode-back" href="../main_window.html#main_window.TextEditWindow.maybe_save">[docs]</a>    <span class="k">def</span> <span class="nf">maybe_save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text_edit</span><span class="o">.</span><span class="n">document</span><span class="p">()</span><span class="o">.</span><span class="n">isModified</span><span class="p">():</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">QMessageBox</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">QCoreApplication</span><span class="o">.</span><span class="n">applicationName</span><span class="p">(),</span>
+                                  <span class="bp">self</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span> <span class="s2">&quot;The document has been modified.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                                  <span class="s2">&quot;Do you want to save your changes?&quot;</span><span class="p">),</span>
+                                  <span class="n">QMessageBox</span><span class="o">.</span><span class="n">Save</span> <span class="o">|</span> <span class="n">QMessageBox</span><span class="o">.</span><span class="n">Discard</span>
+                                  <span class="o">|</span> <span class="n">QMessageBox</span><span class="o">.</span><span class="n">Cancel</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ret</span> <span class="o">==</span> <span class="n">QMessageBox</span><span class="o">.</span><span class="n">Save</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_save</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">ret</span> <span class="o">==</span> <span class="n">QMessageBox</span><span class="o">.</span><span class="n">Cancel</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+<div class="viewcode-block" id="TextEditWindow.set_current_file_name"><a class="viewcode-back" href="../main_window.html#main_window.TextEditWindow.set_current_file_name">[docs]</a>    <span class="k">def</span> <span class="nf">set_current_file_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileName</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_file_name</span> <span class="o">=</span> <span class="n">fileName</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_text_edit</span><span class="o">.</span><span class="n">document</span><span class="p">()</span><span class="o">.</span><span class="n">setModified</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="n">shown_name</span> <span class="o">=</span> <span class="n">QFileInfo</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span><span class="o">.</span><span class="n">fileName</span><span class="p">()</span> <span class="k">if</span> <span class="n">fileName</span> <span class="k">else</span> <span class="s2">&quot;untitled.txt&quot;</span>
+        <span class="n">app_name</span> <span class="o">=</span> <span class="n">QCoreApplication</span><span class="o">.</span><span class="n">applicationName</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">shown_name</span><span class="si">}</span><span class="s2">[*] - </span><span class="si">{</span><span class="n">app_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setWindowModified</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TextEditWindow.file_new"><a class="viewcode-back" href="../main_window.html#main_window.TextEditWindow.file_new">[docs]</a>    <span class="nd">@Slot</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">file_new</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">maybe_save</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_text_edit</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_current_file_name</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TextEditWindow.file_open"><a class="viewcode-back" href="../main_window.html#main_window.TextEditWindow.file_open">[docs]</a>    <span class="nd">@Slot</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">file_open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">file_dialog</span> <span class="o">=</span> <span class="n">QFileDialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;Open File...&quot;</span><span class="p">)</span>
+        <span class="n">file_dialog</span><span class="o">.</span><span class="n">setAcceptMode</span><span class="p">(</span><span class="n">QFileDialog</span><span class="o">.</span><span class="n">AcceptOpen</span><span class="p">)</span>
+        <span class="n">file_dialog</span><span class="o">.</span><span class="n">setFileMode</span><span class="p">(</span><span class="n">QFileDialog</span><span class="o">.</span><span class="n">ExistingFile</span><span class="p">)</span>
+        <span class="n">file_dialog</span><span class="o">.</span><span class="n">setMimeTypeFilters</span><span class="p">([</span><span class="s2">&quot;text/markdown&quot;</span><span class="p">,</span> <span class="s2">&quot;text/plain&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">file_dialog</span><span class="o">.</span><span class="n">exec</span><span class="p">()</span> <span class="o">!=</span> <span class="n">QDialog</span><span class="o">.</span><span class="n">Accepted</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">fn</span> <span class="o">=</span> <span class="n">file_dialog</span><span class="o">.</span><span class="n">selectedFiles</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">native_fn</span> <span class="o">=</span> <span class="n">QDir</span><span class="o">.</span><span class="n">toNativeSeparators</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_file</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">statusBar</span><span class="p">()</span><span class="o">.</span><span class="n">showMessage</span><span class="p">(</span><span class="s1">&#39;Opened &quot;</span><span class="si">{native_fn}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">statusBar</span><span class="p">()</span><span class="o">.</span><span class="n">showMessage</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Could not open &quot;</span><span class="si">{</span><span class="n">native_fn</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TextEditWindow.file_save"><a class="viewcode-back" href="../main_window.html#main_window.TextEditWindow.file_save">[docs]</a>    <span class="nd">@Slot</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">file_save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_file_name</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_file_name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;:/&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_save_as</span><span class="p">()</span>
+
+        <span class="n">writer</span> <span class="o">=</span> <span class="n">QTextDocumentWriter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_file_name</span><span class="p">)</span>
+       
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">format</span> <span class="o">==</span> <span class="s2">&quot;html&quot;</span><span class="p">:</span>
+            <span class="n">document</span> <span class="o">=</span> <span class="n">markdown</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text_edit</span><span class="o">.</span><span class="n">document</span><span class="p">()</span><span class="o">.</span><span class="n">toPlainText</span><span class="p">())</span>           
+            
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_file_name</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s2">&quot;&lt;html&gt;&lt;head&gt;&lt;style&gt;&quot;</span>
+                          <span class="s2">&quot;&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&quot;</span><span class="p">,</span>
+                          <span class="n">document</span><span class="p">,</span>
+                          <span class="s2">&quot;&lt;/body&gt;&lt;/html&gt;&quot;</span><span class="p">]))</span>
+                <span class="n">success</span> <span class="o">=</span> <span class="n">f</span>
+            <span class="n">native_fn</span> <span class="o">=</span> <span class="n">QDir</span><span class="o">.</span><span class="n">toNativeSeparators</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_file_name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">success</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_text_edit</span><span class="o">.</span><span class="n">document</span><span class="p">()</span><span class="o">.</span><span class="n">setModified</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">statusBar</span><span class="p">()</span><span class="o">.</span><span class="n">showMessage</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Wrote &quot;</span><span class="si">{</span><span class="n">native_fn</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">statusBar</span><span class="p">()</span><span class="o">.</span><span class="n">showMessage</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Could not write to file &quot;</span><span class="si">{</span><span class="n">native_fn</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">success</span>          
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">document</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text_edit</span><span class="o">.</span><span class="n">document</span><span class="p">();</span>
+            <span class="n">success</span> <span class="o">=</span> <span class="n">writer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">document</span><span class="p">)</span>
+            <span class="n">native_fn</span> <span class="o">=</span> <span class="n">QDir</span><span class="o">.</span><span class="n">toNativeSeparators</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_file_name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">success</span><span class="p">:</span>
+                <span class="n">document</span><span class="o">.</span><span class="n">setModified</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">statusBar</span><span class="p">()</span><span class="o">.</span><span class="n">showMessage</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Wrote &quot;</span><span class="si">{</span><span class="n">native_fn</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">statusBar</span><span class="p">()</span><span class="o">.</span><span class="n">showMessage</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Could not write to file &quot;</span><span class="si">{</span><span class="n">native_fn</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">success</span>  </div>
+        
+        
+<div class="viewcode-block" id="TextEditWindow.file_save_as"><a class="viewcode-back" href="../main_window.html#main_window.TextEditWindow.file_save_as">[docs]</a>    <span class="nd">@Slot</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">file_save_as</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">file_dialog</span> <span class="o">=</span> <span class="n">QFileDialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;Save as...&quot;</span><span class="p">)</span>
+        <span class="n">file_dialog</span><span class="o">.</span><span class="n">setAcceptMode</span><span class="p">(</span><span class="n">QFileDialog</span><span class="o">.</span><span class="n">AcceptSave</span><span class="p">)</span>
+
+        <span class="n">mime_types</span> <span class="o">=</span> <span class="n">MIME_TYPES</span>
+        <span class="n">file_dialog</span><span class="o">.</span><span class="n">setMimeTypeFilters</span><span class="p">(</span><span class="n">mime_types</span><span class="p">)</span>
+        <span class="n">file_dialog</span><span class="o">.</span><span class="n">setDefaultSuffix</span><span class="p">(</span><span class="s2">&quot;md&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">file_dialog</span><span class="o">.</span><span class="n">exec</span><span class="p">()</span> <span class="o">!=</span> <span class="n">QDialog</span><span class="o">.</span><span class="n">Accepted</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="n">fn</span> <span class="o">=</span> <span class="n">file_dialog</span><span class="o">.</span><span class="n">selectedFiles</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_current_file_name</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+        <span class="n">file_info</span><span class="o">=</span> <span class="n">QFileInfo</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">format</span> <span class="o">=</span> <span class="n">file_info</span><span class="o">.</span><span class="n">suffix</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_save</span><span class="p">()</span></div>
+           
+
+    
+
+<div class="viewcode-block" id="TextEditWindow.clipboard_data_changed"><a class="viewcode-back" href="../main_window.html#main_window.TextEditWindow.clipboard_data_changed">[docs]</a>    <span class="nd">@Slot</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">clipboard_data_changed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">md</span> <span class="o">=</span> <span class="n">QGuiApplication</span><span class="o">.</span><span class="n">clipboard</span><span class="p">()</span><span class="o">.</span><span class="n">mimeData</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionPaste</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="n">md</span> <span class="ow">and</span> <span class="n">md</span><span class="o">.</span><span class="n">hasText</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="TextEditWindow.about"><a class="viewcode-back" href="../main_window.html#main_window.TextEditWindow.about">[docs]</a>    <span class="nd">@Slot</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">about</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="n">QMessageBox</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">message</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">ABOUT</span><span class="p">)</span>
+        <span class="n">message</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s2">&quot;About&quot;</span><span class="p">)</span>
+        <span class="n">message</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span></div></div>
+        <span class="c1">#QMessageBox.about(self, &quot;About&quot;, ABOUT)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Marta Reyes.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

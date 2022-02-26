@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>view_main_window &mdash; TextEdit 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> TextEdit
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">docs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TextEdit</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Module code</a> &raquo;</li>
+      <li>view_main_window</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for view_main_window</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="c1">################################################################################</span>
+<span class="c1">## Form generated from reading UI file &#39;main_window.ui&#39;</span>
+<span class="c1">##</span>
+<span class="c1">## Created by: Qt User Interface Compiler version 5.15.2</span>
+<span class="c1">##</span>
+<span class="c1">## WARNING! All changes made in this file will be lost when recompiling UI file!</span>
+<span class="c1">################################################################################</span>
+
+<span class="kn">from</span> <span class="nn">PySide2.QtCore</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">PySide2.QtGui</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">PySide2.QtWidgets</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">PySide2.QtWebEngineWidgets</span> <span class="kn">import</span> <span class="o">*</span>
+
+
+<div class="viewcode-block" id="TextEdit"><a class="viewcode-back" href="../view_main_window.html#view_main_window.TextEdit">[docs]</a><span class="k">class</span> <span class="nc">TextEdit</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="TextEdit.setupUi"><a class="viewcode-back" href="../view_main_window.html#view_main_window.TextEdit.setupUi">[docs]</a>    <span class="k">def</span> <span class="nf">setupUi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">TextEdit</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :This function makes de graphical structure of the interface of our application:</span>
+
+<span class="sd">        </span>
+
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">TextEdit</span><span class="o">.</span><span class="n">objectName</span><span class="p">():</span>
+            <span class="n">TextEdit</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">)</span>
+        <span class="n">TextEdit</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">675</span><span class="p">,</span> <span class="mi">553</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">centralwidget</span> <span class="o">=</span> <span class="n">QWidget</span><span class="p">(</span><span class="n">TextEdit</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">centralwidget</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;centralwidget&quot;</span><span class="p">)</span>
+       <span class="c1"># self.plainTextEdit = QPlainTextEdit(self.centralwidget)</span>
+        <span class="c1">#self.plainTextEdit.setObjectName(u&quot;plainTextEdit&quot;)</span>
+        <span class="c1">#self.plainTextEdit.setGeometry(QRect(0, 0, 675, 491))</span>
+        <span class="c1">#self.plainTextEdit.setFocusPolicy(Qt.TabFocus)</span>
+        <span class="c1">#TextEdit.setCentralWidget(self.centralwidget)</span>
+        <span class="c1">#self.centralwidget = QWidget(TextEdit)</span>
+        <span class="c1">#self.centralwidget.setObjectName(u&quot;centralwidget&quot;)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">horizontalLayout</span> <span class="o">=</span> <span class="n">QHBoxLayout</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">centralwidget</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">horizontalLayout</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;horizontalLayout&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">splitter</span> <span class="o">=</span> <span class="n">QSplitter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">centralwidget</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">splitter</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;splitter&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">splitter</span><span class="o">.</span><span class="n">setOrientation</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">Horizontal</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_text_edit</span> <span class="o">=</span> <span class="n">QTextEdit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">splitter</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_text_edit</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;_text_edit&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">splitter</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text_edit</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">preview</span> <span class="o">=</span> <span class="n">QWebEngineView</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">splitter</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">preview</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;preview&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">splitter</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">preview</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionNew</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">(</span><span class="n">TextEdit</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionNew</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;actionNew&quot;</span><span class="p">)</span>
+        <span class="n">icon</span> <span class="o">=</span> <span class="n">QIcon</span><span class="p">()</span>
+        <span class="n">icon</span><span class="o">.</span><span class="n">addFile</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;./asserts/filenew.png&quot;</span><span class="p">,</span> <span class="n">QSize</span><span class="p">(),</span> <span class="n">QIcon</span><span class="o">.</span><span class="n">Normal</span><span class="p">,</span> <span class="n">QIcon</span><span class="o">.</span><span class="n">Off</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionNew</span><span class="o">.</span><span class="n">setIcon</span><span class="p">(</span><span class="n">icon</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionOpen</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">(</span><span class="n">TextEdit</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionOpen</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;actionOpen&quot;</span><span class="p">)</span>
+        <span class="n">icon1</span> <span class="o">=</span> <span class="n">QIcon</span><span class="p">()</span>
+        <span class="n">icon1</span><span class="o">.</span><span class="n">addFile</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;./asserts/fileopen.png&quot;</span><span class="p">,</span> <span class="n">QSize</span><span class="p">(),</span> <span class="n">QIcon</span><span class="o">.</span><span class="n">Normal</span><span class="p">,</span> <span class="n">QIcon</span><span class="o">.</span><span class="n">Off</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionOpen</span><span class="o">.</span><span class="n">setIcon</span><span class="p">(</span><span class="n">icon1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionSave</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">(</span><span class="n">TextEdit</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionSave</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;actionSave&quot;</span><span class="p">)</span>
+        <span class="n">icon2</span> <span class="o">=</span> <span class="n">QIcon</span><span class="p">()</span>
+        <span class="n">icon2</span><span class="o">.</span><span class="n">addFile</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;./asserts/filesave.png&quot;</span><span class="p">,</span> <span class="n">QSize</span><span class="p">(),</span> <span class="n">QIcon</span><span class="o">.</span><span class="n">Normal</span><span class="p">,</span> <span class="n">QIcon</span><span class="o">.</span><span class="n">Off</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionSave</span><span class="o">.</span><span class="n">setIcon</span><span class="p">(</span><span class="n">icon2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionSave_As</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">(</span><span class="n">TextEdit</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionSave_As</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;actionSave_As&quot;</span><span class="p">)</span>
+        <span class="n">icon3</span> <span class="o">=</span> <span class="n">QIcon</span><span class="p">()</span>
+        <span class="n">icon3</span><span class="o">.</span><span class="n">addFile</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;./asserts/filesaveas.png&quot;</span><span class="p">,</span> <span class="n">QSize</span><span class="p">(),</span> <span class="n">QIcon</span><span class="o">.</span><span class="n">Normal</span><span class="p">,</span> <span class="n">QIcon</span><span class="o">.</span><span class="n">Off</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionSave_As</span><span class="o">.</span><span class="n">setIcon</span><span class="p">(</span><span class="n">icon3</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionQuit</span> <span class="o">=</span><span class="n">QAction</span><span class="p">(</span><span class="n">TextEdit</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionQuit</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="s2">&quot;actionQuit&quot;</span><span class="p">)</span>
+        <span class="n">icon4</span> <span class="o">=</span> <span class="n">QIcon</span><span class="p">()</span>
+        <span class="n">icon4</span><span class="o">.</span><span class="n">addFile</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;./asserts/quit.png&quot;</span><span class="p">,</span> <span class="n">QSize</span><span class="p">(),</span> <span class="n">QIcon</span><span class="o">.</span><span class="n">Normal</span><span class="p">,</span> <span class="n">QIcon</span><span class="o">.</span><span class="n">Off</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionQuit</span><span class="o">.</span><span class="n">setIcon</span><span class="p">(</span><span class="n">icon4</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionUndo</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">(</span><span class="n">TextEdit</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionUndo</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;actionUndo&quot;</span><span class="p">)</span>
+        <span class="n">icon5</span> <span class="o">=</span> <span class="n">QIcon</span><span class="p">()</span>
+        <span class="n">icon5</span><span class="o">.</span><span class="n">addFile</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;./asserts/editundo.png&quot;</span><span class="p">,</span> <span class="n">QSize</span><span class="p">(),</span> <span class="n">QIcon</span><span class="o">.</span><span class="n">Normal</span><span class="p">,</span> <span class="n">QIcon</span><span class="o">.</span><span class="n">Off</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionUndo</span><span class="o">.</span><span class="n">setIcon</span><span class="p">(</span><span class="n">icon5</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionRedo</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">(</span><span class="n">TextEdit</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionRedo</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;actionRedo&quot;</span><span class="p">)</span>
+        <span class="n">icon6</span> <span class="o">=</span> <span class="n">QIcon</span><span class="p">()</span>
+        <span class="n">icon6</span><span class="o">.</span><span class="n">addFile</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;./asserts/editredo.png&quot;</span><span class="p">,</span> <span class="n">QSize</span><span class="p">(),</span> <span class="n">QIcon</span><span class="o">.</span><span class="n">Normal</span><span class="p">,</span> <span class="n">QIcon</span><span class="o">.</span><span class="n">Off</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionRedo</span><span class="o">.</span><span class="n">setIcon</span><span class="p">(</span><span class="n">icon6</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionCut</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">(</span><span class="n">TextEdit</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionCut</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;actionCut&quot;</span><span class="p">)</span>
+        <span class="n">icon7</span> <span class="o">=</span> <span class="n">QIcon</span><span class="p">()</span>
+        <span class="n">icon7</span><span class="o">.</span><span class="n">addFile</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;./asserts/editcut.png&quot;</span><span class="p">,</span> <span class="n">QSize</span><span class="p">(),</span> <span class="n">QIcon</span><span class="o">.</span><span class="n">Normal</span><span class="p">,</span> <span class="n">QIcon</span><span class="o">.</span><span class="n">Off</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionCut</span><span class="o">.</span><span class="n">setIcon</span><span class="p">(</span><span class="n">icon7</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionCopy</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">(</span><span class="n">TextEdit</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionCopy</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;actionCopy&quot;</span><span class="p">)</span>
+        <span class="n">icon8</span> <span class="o">=</span> <span class="n">QIcon</span><span class="p">()</span>
+        <span class="n">icon8</span><span class="o">.</span><span class="n">addFile</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;./asserts/editcopy.png&quot;</span><span class="p">,</span> <span class="n">QSize</span><span class="p">(),</span> <span class="n">QIcon</span><span class="o">.</span><span class="n">Normal</span><span class="p">,</span> <span class="n">QIcon</span><span class="o">.</span><span class="n">Off</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionCopy</span><span class="o">.</span><span class="n">setIcon</span><span class="p">(</span><span class="n">icon8</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionPaste</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">(</span><span class="n">TextEdit</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionPaste</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;actionPaste&quot;</span><span class="p">)</span>
+        <span class="n">icon9</span> <span class="o">=</span> <span class="n">QIcon</span><span class="p">()</span>
+        <span class="n">icon9</span><span class="o">.</span><span class="n">addFile</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;./asserts/editpaste.png&quot;</span><span class="p">,</span> <span class="n">QSize</span><span class="p">(),</span> <span class="n">QIcon</span><span class="o">.</span><span class="n">Normal</span><span class="p">,</span> <span class="n">QIcon</span><span class="o">.</span><span class="n">Off</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionPaste</span><span class="o">.</span><span class="n">setIcon</span><span class="p">(</span><span class="n">icon9</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionAbout</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">(</span><span class="n">TextEdit</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionAbout</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;actionAbout&quot;</span><span class="p">)</span>
+        
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">undo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text_edit</span><span class="o">.</span><span class="n">undo</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">horizontalLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">splitter</span><span class="p">)</span>
+
+        <span class="n">TextEdit</span><span class="o">.</span><span class="n">setCentralWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">centralwidget</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">statusbar</span> <span class="o">=</span> <span class="n">QStatusBar</span><span class="p">(</span><span class="n">TextEdit</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">statusbar</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;statusbar&quot;</span><span class="p">)</span>
+        <span class="n">TextEdit</span><span class="o">.</span><span class="n">setStatusBar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">statusbar</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">menuBar</span> <span class="o">=</span> <span class="n">QMenuBar</span><span class="p">(</span><span class="n">TextEdit</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">menuBar</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;menuBar&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">menuBar</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="n">QRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">675</span><span class="p">,</span> <span class="mi">21</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">menuFile</span> <span class="o">=</span> <span class="n">QMenu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">menuBar</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">menuFile</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;menuFile&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">menuEdit</span> <span class="o">=</span> <span class="n">QMenu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">menuBar</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">menuEdit</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;menuEdit&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">menuHelp</span> <span class="o">=</span> <span class="n">QMenu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">menuBar</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">menuHelp</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;menuHelp&quot;</span><span class="p">)</span>
+        <span class="n">TextEdit</span><span class="o">.</span><span class="n">setMenuBar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">menuBar</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">toolBar</span> <span class="o">=</span> <span class="n">QToolBar</span><span class="p">(</span><span class="n">TextEdit</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">toolBar</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="s2">&quot;toolBar&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">toolBar</span><span class="o">.</span><span class="n">setFocusPolicy</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">TabFocus</span><span class="p">)</span>
+        <span class="n">TextEdit</span><span class="o">.</span><span class="n">addToolBar</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">TopToolBarArea</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">toolBar</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">menuBar</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">menuFile</span><span class="o">.</span><span class="n">menuAction</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">menuBar</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">menuEdit</span><span class="o">.</span><span class="n">menuAction</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">menuBar</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">menuHelp</span><span class="o">.</span><span class="n">menuAction</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">menuFile</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actionNew</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">menuFile</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actionOpen</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">menuFile</span><span class="o">.</span><span class="n">addSeparator</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">menuFile</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actionSave</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">menuFile</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actionSave_As</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">menuFile</span><span class="o">.</span><span class="n">addSeparator</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">menuFile</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actionQuit</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">menuEdit</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actionUndo</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">menuEdit</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actionRedo</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">menuEdit</span><span class="o">.</span><span class="n">addSeparator</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">menuEdit</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actionCut</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">menuEdit</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actionCopy</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">menuEdit</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actionPaste</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">menuHelp</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actionAbout</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">toolBar</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actionNew</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">toolBar</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actionOpen</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">toolBar</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actionSave</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">toolBar</span><span class="o">.</span><span class="n">addSeparator</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">toolBar</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actionUndo</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">toolBar</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actionRedo</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">toolBar</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actionCut</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">toolBar</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actionCopy</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">toolBar</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actionPaste</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">retranslateUi</span><span class="p">(</span><span class="n">TextEdit</span><span class="p">)</span>
+
+        <span class="n">QMetaObject</span><span class="o">.</span><span class="n">connectSlotsByName</span><span class="p">(</span><span class="n">TextEdit</span><span class="p">)</span></div>
+    <span class="c1"># setupUi</span>
+
+<div class="viewcode-block" id="TextEdit.retranslateUi"><a class="viewcode-back" href="../view_main_window.html#view_main_window.TextEdit.retranslateUi">[docs]</a>    <span class="k">def</span> <span class="nf">retranslateUi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">TextEdit</span><span class="p">):</span>
+        <span class="n">TextEdit</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionNew</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">QCoreApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;New&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="c1">#if QT_CONFIG(shortcut)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionNew</span><span class="o">.</span><span class="n">setShortcut</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;Ctrl+N&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="c1">#endif // QT_CONFIG(shortcut)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionOpen</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="s2">&quot;Open...&quot;</span><span class="p">))</span>
+<span class="c1">#if QT_CONFIG(shortcut)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionOpen</span><span class="o">.</span><span class="n">setShortcut</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;Ctrl+O&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="c1">#endif // QT_CONFIG(shortcut)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionSave</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;Save&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="c1">#if QT_CONFIG(shortcut)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionSave</span><span class="o">.</span><span class="n">setShortcut</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;Ctrl+S&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="c1">#endif // QT_CONFIG(shortcut)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionSave_As</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;Save As...&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionQuit</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;Quit&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionQuit</span><span class="o">.</span><span class="n">setShortcut</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;Ctrl+Q&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionUndo</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;Undo&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="c1">#if QT_CONFIG(shortcut)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionUndo</span><span class="o">.</span><span class="n">setShortcut</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;Ctrl+Z&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="c1">#endif // QT_CONFIG(shortcut)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionRedo</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;Redo&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="c1">#if QT_CONFIG(shortcut)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionRedo</span><span class="o">.</span><span class="n">setShortcut</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;Ctrl+Y&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="c1">#endif // QT_CONFIG(shortcut)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionCut</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;Cut&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="c1">#if QT_CONFIG(shortcut)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionCut</span><span class="o">.</span><span class="n">setShortcut</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;Ctrl+X&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="c1">#endif // QT_CONFIG(shortcut)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionCopy</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;Copy&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="c1">#if QT_CONFIG(shortcut)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionCopy</span><span class="o">.</span><span class="n">setShortcut</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;Ctrl+C&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="c1">#endif // QT_CONFIG(shortcut)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionPaste</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;Paste&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="c1">#if QT_CONFIG(shortcut)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionPaste</span><span class="o">.</span><span class="n">setShortcut</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;Ctrl+V&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="c1">#endif // QT_CONFIG(shortcut)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionAbout</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;About&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">menuFile</span><span class="o">.</span><span class="n">setTitle</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;File&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">menuEdit</span><span class="o">.</span><span class="n">setTitle</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;Edit&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">menuHelp</span><span class="o">.</span><span class="n">setTitle</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;Help&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">toolBar</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;toolBar&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span></div></div>
+    <span class="c1"># retranslateUi</span>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Marta Reyes.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -17,7 +17,7 @@ from PySide2.QtWebEngineWidgets import QWebEngineView
 from PySide2.QtPrintSupport import (QAbstractPrintDialog, QPrinter,
                                     QPrintDialog, QPrintPreviewDialog)
 
-from views.main_window import TextEdit
+from views.view_main_window import TextEdit
 
 ABOUT = """""".join(["""<p>This is a markdown text editor with preview. The
                      uploaded or created files can be saved in different formats 
@@ -34,6 +34,9 @@ MIME_TYPES = ["text/html", "text/markdown", "text/plain"] #para guardarlo de eso
 
 class TextEditWindow(QMainWindow, TextEdit):
     def __init__(self , parent=None):
+        """
+        this execute the app
+        """
         super().__init__(parent)
         self.setupUi(self)
 
