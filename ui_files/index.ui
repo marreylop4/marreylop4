@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Index</class>
+ <widget class="QWidget" name="Index">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>720</width>
+    <height>533</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Index</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../assets/favicon.png</normaloff>
+    <normalon>../assets/favicon.png</normalon>../assets/favicon.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QFrame" name="backgroundFrame">
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QWidget" name="contentWidget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>50</y>
+        <width>231</width>
+        <height>231</height>
+       </rect>
+      </property>
+      <property name="whatsThis">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/assets/logo.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+image: url(:/assets/logo.png);</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Information">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>300</y>
+        <width>231</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+background-color: rgb(75, 132, 255);
+color:white;
+}
+QPushButton::hover{
+	background-color: rgb(89, 178, 220);
+}</string>
+      </property>
+      <property name="text">
+       <string>Information...</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="newFile">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>360</y>
+        <width>231</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+background-color: rgb(75, 132, 255);
+color:white;
+}
+QPushButton::hover{
+	background-color: rgb(89, 178, 220);
+}</string>
+      </property>
+      <property name="text">
+       <string>New File</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../assets/filenew.png</normaloff>../assets/filenew.png</iconset>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="openFile">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>420</y>
+        <width>231</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+background-color: rgb(75, 132, 255);
+color:white;
+}
+QPushButton::hover{
+	background-color: rgb(89, 178, 220);
+}</string>
+      </property>
+      <property name="text">
+       <string>Open File</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../assets/fileopen.png</normaloff>../assets/fileopen.png</iconset>
+      </property>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../textedit.qrc"/>
+ </resources>
+ <connections/>
+</ui>

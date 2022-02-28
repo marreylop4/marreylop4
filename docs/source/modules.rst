@@ -1,5 +1,5 @@
-docs
-====
+Application Classes
+========================
 
 .. toctree::
    :maxdepth: 4

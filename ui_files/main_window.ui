@@ -96,7 +96,7 @@
   <action name="actionNew">
    <property name="icon">
     <iconset>
-     <normaloff>../asserts/filenew.png</normaloff>../asserts/filenew.png</iconset>
+     <normaloff>../assets/filenew.png</normaloff>../assets/filenew.png</iconset>
    </property>
    <property name="text">
     <string>New</string>
@@ -111,7 +111,7 @@
   <action name="actionOpen">
    <property name="icon">
     <iconset>
-     <normaloff>../asserts/fileopen.png</normaloff>../asserts/fileopen.png</iconset>
+     <normaloff>../assets/fileopen.png</normaloff>../assets/fileopen.png</iconset>
    </property>
    <property name="text">
     <string>Open...</string>
@@ -123,7 +123,7 @@
   <action name="actionSave">
    <property name="icon">
     <iconset>
-     <normaloff>../asserts/filesave.png</normaloff>../asserts/filesave.png</iconset>
+     <normaloff>../assets/filesave.png</normaloff>../assets/filesave.png</iconset>
    </property>
    <property name="text">
     <string>Save</string>
@@ -138,13 +138,13 @@
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>../asserts/filesaveAs.png</normaloff>../asserts/filesaveAs.png</iconset>
+     <normaloff>../assets/filesaveAs.png</normaloff>../assets/filesaveAs.png</iconset>
    </property>
   </action>
   <action name="actionQuit">
    <property name="icon">
     <iconset>
-     <normaloff>../asserts/quit.png</normaloff>../asserts/quit.png</iconset>
+     <normaloff>../assets/quit.png</normaloff>../assets/quit.png</iconset>
    </property>
    <property name="text">
     <string>Quit</string>
@@ -156,7 +156,7 @@
   <action name="actionUndo">
    <property name="icon">
     <iconset>
-     <normaloff>../asserts/editundo.png</normaloff>../asserts/editundo.png</iconset>
+     <normaloff>../assets/editundo.png</normaloff>../assets/editundo.png</iconset>
    </property>
    <property name="text">
     <string>Undo</string>
@@ -168,7 +168,7 @@
   <action name="actionRedo">
    <property name="icon">
     <iconset>
-     <normaloff>../asserts/editredo.png</normaloff>../asserts/editredo.png</iconset>
+     <normaloff>../assets/editredo.png</normaloff>../assets/editredo.png</iconset>
    </property>
    <property name="text">
     <string>Redo</string>
@@ -180,7 +180,7 @@
   <action name="actionCut">
    <property name="icon">
     <iconset>
-     <normaloff>../asserts/editcut.png</normaloff>../asserts/editcut.png</iconset>
+     <normaloff>../assets/editcut.png</normaloff>../assets/editcut.png</iconset>
    </property>
    <property name="text">
     <string>Cut</string>
@@ -192,7 +192,7 @@
   <action name="actionCopy">
    <property name="icon">
     <iconset>
-     <normaloff>../asserts/editcopy.png</normaloff>../asserts/editcopy.png</iconset>
+     <normaloff>../assets/editcopy.png</normaloff>../assets/editcopy.png</iconset>
    </property>
    <property name="text">
     <string>Copy</string>
@@ -204,7 +204,7 @@
   <action name="actionPaste">
    <property name="icon">
     <iconset>
-     <normaloff>../asserts/editpaste.png</normaloff>../asserts/editpaste.png</iconset>
+     <normaloff>../assets/editpaste.png</normaloff>../assets/editpaste.png</iconset>
    </property>
    <property name="text">
     <string>Paste</string>

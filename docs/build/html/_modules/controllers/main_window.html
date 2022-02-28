@@ -91,7 +91,7 @@
 <span class="s2">                     &lt;a href =https://www.markdownguide.org/basic-syntax/#html&gt;Markdown Guide&lt;/a&gt; &quot;&quot;&quot;</span><span class="p">])</span>
 
 
-<span class="n">MIME_TYPES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;text/html&quot;</span><span class="p">,</span> <span class="s2">&quot;text/markdown&quot;</span><span class="p">,</span> <span class="s2">&quot;text/plain&quot;</span><span class="p">]</span> <span class="c1">#para guardarlo de esos tipos</span>
+<span class="n">MIME_TYPES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;text/html&quot;</span><span class="p">,</span> <span class="s2">&quot;text/markdown&quot;</span><span class="p">,</span> <span class="s2">&quot;text/plain&quot;</span><span class="p">]</span>
 
 
 
@@ -99,11 +99,25 @@
 
 
 <div class="viewcode-block" id="TextEditWindow"><a class="viewcode-back" href="../../main_window.html#controllers.main_window.TextEditWindow">[docs]</a><span class="k">class</span> <span class="nc">TextEditWindow</span><span class="p">(</span><span class="n">QMainWindow</span><span class="p">,</span> <span class="n">TextEdit</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span> <span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This class is where the functions will be carried out so that the actions of the interface work</span>
+<span class="sd">    </span>
+<span class="sd">    Inputs:</span>
+<span class="sd">        :QMainWindow: this is the type of page of our interface</span>
+<span class="sd">        :TextEdit: inherited from views.view_main_window class</span>
+<span class="sd">        </span>
+
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span> <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        this execute the app</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+<span class="sd">        This function initializes the methods of this class that sub becesaruis so that the application works correctly       </span>
+<span class="sd">        </span>
+<span class="sd">        </span>
+
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>    
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setupUi</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="n">QCoreApplication</span><span class="o">.</span><span class="n">applicationName</span><span class="p">())</span><span class="c1">#el titulo de la app</span>
@@ -146,7 +160,14 @@
 
         
         
-<div class="viewcode-block" id="TextEditWindow.onTextChanged"><a class="viewcode-back" href="../../main_window.html#controllers.main_window.TextEditWindow.onTextChanged">[docs]</a>    <span class="k">def</span> <span class="nf">onTextChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>       
+<div class="viewcode-block" id="TextEditWindow.onTextChanged"><a class="viewcode-back" href="../../main_window.html#controllers.main_window.TextEditWindow.onTextChanged">[docs]</a>    <span class="k">def</span> <span class="nf">onTextChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>     
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function does the preview of the markdown text every </span>
+<span class="sd">        time it detects that the text changes    </span>
+<span class="sd">        </span>
+
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>    
         <span class="k">try</span><span class="p">:</span>
             <span class="n">html</span> <span class="o">=</span> <span class="n">markdown</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text_edit</span><span class="o">.</span><span class="n">toPlainText</span><span class="p">())</span>
         <span class="k">except</span><span class="p">:</span>
@@ -154,13 +175,25 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">preview</span><span class="o">.</span><span class="n">setHtml</span><span class="p">(</span><span class="n">html</span><span class="p">)</span></div>
         
 <div class="viewcode-block" id="TextEditWindow.closeEvent"><a class="viewcode-back" href="../../main_window.html#controllers.main_window.TextEditWindow.closeEvent">[docs]</a>    <span class="k">def</span> <span class="nf">closeEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function checks if the generated text has been saved before closing the application</span>
+<span class="sd">        </span>
+<span class="sd">        Inputs:</span>
+<span class="sd">            :e: QCloseEvent</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>  
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">maybe_save</span><span class="p">():</span>
             <span class="n">e</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">e</span><span class="o">.</span><span class="n">ignore</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TextEditWindow.setup_file_actions"><a class="viewcode-back" href="../../main_window.html#controllers.main_window.TextEditWindow.setup_file_actions">[docs]</a>    <span class="k">def</span> <span class="nf">setup_file_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function gives the actions to the &quot;File&quot; menu of our interface</span>
 
+
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>  
         <span class="n">menu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menuFile</span>
 
         <span class="n">new</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">actionNew</span>
@@ -186,7 +219,12 @@
         
 
 <div class="viewcode-block" id="TextEditWindow.setup_edit_actions"><a class="viewcode-back" href="../../main_window.html#controllers.main_window.TextEditWindow.setup_edit_actions">[docs]</a>    <span class="k">def</span> <span class="nf">setup_edit_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-       
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function gives the actions to the &quot;Edit&quot; menu of our interface</span>
+
+
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>  
 
         <span class="n">undo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">actionUndo</span>
         <span class="n">undo</span><span class="o">.</span><span class="n">triggered</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text_edit</span><span class="o">.</span><span class="n">undo</span><span class="p">)</span>
@@ -213,13 +251,24 @@
 
     
 <div class="viewcode-block" id="TextEditWindow.load_file"><a class="viewcode-back" href="../../main_window.html#controllers.main_window.TextEditWindow.load_file">[docs]</a>    <span class="k">def</span> <span class="nf">load_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">QFile</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
-            <span class="k">return</span> <span class="kc">False</span>
-        <span class="n">file</span> <span class="o">=</span> <span class="n">QFile</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">file</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">QFile</span><span class="o">.</span><span class="n">ReadOnly</span><span class="p">):</span>
-            <span class="k">return</span> <span class="kc">False</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function loads a file in our application, being able </span>
+<span class="sd">        to load markdown and text type files.</span>
+
+<span class="sd">        Inputs:</span>
+<span class="sd">            :f: the selected file</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span> 
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">maybe_save</span><span class="p">():</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">QFile</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+                <span class="k">return</span> <span class="kc">False</span>
+            <span class="n">file</span> <span class="o">=</span> <span class="n">QFile</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">file</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">QFile</span><span class="o">.</span><span class="n">ReadOnly</span><span class="p">):</span>
+                <span class="k">return</span> <span class="kc">False</span>
 
         <span class="n">data</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readAll</span><span class="p">()</span>
+        <span class="n">file_info</span><span class="o">=</span> <span class="n">QFileInfo</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_current_file_format</span><span class="p">(</span> <span class="n">file_info</span><span class="o">.</span><span class="n">suffix</span><span class="p">())</span>
         <span class="n">db</span> <span class="o">=</span> <span class="n">QMimeDatabase</span><span class="p">()</span>
         <span class="n">mime_type_name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">mimeTypeForFileNameAndData</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">()</span>
         <span class="n">text</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span>
@@ -232,6 +281,13 @@
         <span class="k">return</span> <span class="kc">True</span></div>
 
 <div class="viewcode-block" id="TextEditWindow.maybe_save"><a class="viewcode-back" href="../../main_window.html#controllers.main_window.TextEditWindow.maybe_save">[docs]</a>    <span class="k">def</span> <span class="nf">maybe_save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function checks if the document has had a modification </span>
+<span class="sd">        that has not been saved and gives you the option to do so</span>
+
+
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span> 
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text_edit</span><span class="o">.</span><span class="n">document</span><span class="p">()</span><span class="o">.</span><span class="n">isModified</span><span class="p">():</span>
             <span class="k">return</span> <span class="kc">True</span>
 
@@ -247,6 +303,14 @@
         <span class="k">return</span> <span class="kc">True</span></div>
 
 <div class="viewcode-block" id="TextEditWindow.set_current_file_name"><a class="viewcode-back" href="../../main_window.html#controllers.main_window.TextEditWindow.set_current_file_name">[docs]</a>    <span class="k">def</span> <span class="nf">set_current_file_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileName</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function sets the name of the file (it is called in several functions)</span>
+
+<span class="sd">        Inputs:</span>
+<span class="sd">            :fileName: the file name</span>
+
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span> 
         <span class="bp">self</span><span class="o">.</span><span class="n">_file_name</span> <span class="o">=</span> <span class="n">fileName</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_text_edit</span><span class="o">.</span><span class="n">document</span><span class="p">()</span><span class="o">.</span><span class="n">setModified</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 
@@ -254,15 +318,43 @@
         <span class="n">app_name</span> <span class="o">=</span> <span class="n">QCoreApplication</span><span class="o">.</span><span class="n">applicationName</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">shown_name</span><span class="si">}</span><span class="s2">[*] - </span><span class="si">{</span><span class="n">app_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setWindowModified</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span></div>
+        
+<div class="viewcode-block" id="TextEditWindow.set_current_file_format"><a class="viewcode-back" href="../../main_window.html#controllers.main_window.TextEditWindow.set_current_file_format">[docs]</a>    <span class="k">def</span> <span class="nf">set_current_file_format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileFormat</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function sets the format of the file (it is called in several functions)</span>
 
+<span class="sd">        Inputs:</span>
+<span class="sd">            :fileFormat: the file format</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_file_format</span> <span class="o">=</span> <span class="n">fileFormat</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_text_edit</span><span class="o">.</span><span class="n">document</span><span class="p">()</span><span class="o">.</span><span class="n">setModified</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span></div>
+
+        
 <div class="viewcode-block" id="TextEditWindow.file_new"><a class="viewcode-back" href="../../main_window.html#controllers.main_window.TextEditWindow.file_new">[docs]</a>    <span class="nd">@Slot</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">file_new</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function deletes everything that is in the editor if </span>
+<span class="sd">        the previous one has been saved or discarded and thus be able to start a new one</span>
+
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span> 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">maybe_save</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_text_edit</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">set_current_file_name</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span></div>
+            
 
 <div class="viewcode-block" id="TextEditWindow.file_open"><a class="viewcode-back" href="../../main_window.html#controllers.main_window.TextEditWindow.file_open">[docs]</a>    <span class="nd">@Slot</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">file_open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function opens the files that we have saved on our device to </span>
+<span class="sd">        be able to edit them with the application</span>
+
+
+
+
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span> 
         <span class="n">file_dialog</span> <span class="o">=</span> <span class="n">QFileDialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;Open File...&quot;</span><span class="p">)</span>
         <span class="n">file_dialog</span><span class="o">.</span><span class="n">setAcceptMode</span><span class="p">(</span><span class="n">QFileDialog</span><span class="o">.</span><span class="n">AcceptOpen</span><span class="p">)</span>
         <span class="n">file_dialog</span><span class="o">.</span><span class="n">setFileMode</span><span class="p">(</span><span class="n">QFileDialog</span><span class="o">.</span><span class="n">ExistingFile</span><span class="p">)</span>
@@ -278,12 +370,19 @@
 
 <div class="viewcode-block" id="TextEditWindow.file_save"><a class="viewcode-back" href="../../main_window.html#controllers.main_window.TextEditWindow.file_save">[docs]</a>    <span class="nd">@Slot</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">file_save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function saves all the elements of the file generated</span>
+<span class="sd">        or uploaded and modified in our application</span>
+
+
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span> 
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_file_name</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_file_name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;:/&quot;</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_save_as</span><span class="p">()</span>
 
         <span class="n">writer</span> <span class="o">=</span> <span class="n">QTextDocumentWriter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_file_name</span><span class="p">)</span>
        
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">format</span> <span class="o">==</span> <span class="s2">&quot;html&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_file_format</span> <span class="o">==</span> <span class="s2">&quot;html&quot;</span><span class="p">:</span>
             <span class="n">document</span> <span class="o">=</span> <span class="n">markdown</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text_edit</span><span class="o">.</span><span class="n">document</span><span class="p">()</span><span class="o">.</span><span class="n">toPlainText</span><span class="p">())</span>           
             
             <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_file_name</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
@@ -313,6 +412,13 @@
         
 <div class="viewcode-block" id="TextEditWindow.file_save_as"><a class="viewcode-back" href="../../main_window.html#controllers.main_window.TextEditWindow.file_save_as">[docs]</a>    <span class="nd">@Slot</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">file_save_as</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function saves all the elements of the file generated</span>
+<span class="sd">        or loaded and modified in our application, being able to give it the format and name you want.</span>
+
+
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span> 
         <span class="n">file_dialog</span> <span class="o">=</span> <span class="n">QFileDialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;Save as...&quot;</span><span class="p">)</span>
         <span class="n">file_dialog</span><span class="o">.</span><span class="n">setAcceptMode</span><span class="p">(</span><span class="n">QFileDialog</span><span class="o">.</span><span class="n">AcceptSave</span><span class="p">)</span>
 
@@ -324,7 +430,7 @@
         <span class="n">fn</span> <span class="o">=</span> <span class="n">file_dialog</span><span class="o">.</span><span class="n">selectedFiles</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_current_file_name</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
         <span class="n">file_info</span><span class="o">=</span> <span class="n">QFileInfo</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">format</span> <span class="o">=</span> <span class="n">file_info</span><span class="o">.</span><span class="n">suffix</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_current_file_format</span><span class="p">(</span> <span class="n">file_info</span><span class="o">.</span><span class="n">suffix</span><span class="p">())</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_save</span><span class="p">()</span></div>
            
 
@@ -332,16 +438,23 @@
 
 <div class="viewcode-block" id="TextEditWindow.clipboard_data_changed"><a class="viewcode-back" href="../../main_window.html#controllers.main_window.TextEditWindow.clipboard_data_changed">[docs]</a>    <span class="nd">@Slot</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">clipboard_data_changed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function takes what is saved in the clipboard and puts it in what the paste action can do</span>
+
+
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span> 
         <span class="n">md</span> <span class="o">=</span> <span class="n">QGuiApplication</span><span class="o">.</span><span class="n">clipboard</span><span class="p">()</span><span class="o">.</span><span class="n">mimeData</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">actionPaste</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="n">md</span> <span class="ow">and</span> <span class="n">md</span><span class="o">.</span><span class="n">hasText</span><span class="p">())</span></div>
 
 <div class="viewcode-block" id="TextEditWindow.about"><a class="viewcode-back" href="../../main_window.html#controllers.main_window.TextEditWindow.about">[docs]</a>    <span class="nd">@Slot</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">about</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">message</span> <span class="o">=</span> <span class="n">QMessageBox</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="n">message</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">ABOUT</span><span class="p">)</span>
-        <span class="n">message</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s2">&quot;About&quot;</span><span class="p">)</span>
-        <span class="n">message</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span></div></div>
-        <span class="c1">#QMessageBox.about(self, &quot;About&quot;, ABOUT)</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function creates a message box with information about what you can do in the application</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span> 
+        
+        <span class="n">QMessageBox</span><span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;About&quot;</span><span class="p">,</span> <span class="n">ABOUT</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>

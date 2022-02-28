@@ -17,8 +17,10 @@ from PySide2.QtWebEngineWidgets import *
 class TextEdit(object):
     def setupUi(self, TextEdit):
         """
-        :This function makes de graphical structure of the interface of our application:
-
+        This function makes de graphical structure of the interface of our application
+        
+        Inputs:
+            :TextEdit: QMainWindow
         
 
         
@@ -50,52 +52,52 @@ class TextEdit(object):
         self.actionNew = QAction(TextEdit)
         self.actionNew.setObjectName(u"actionNew")
         icon = QIcon()
-        icon.addFile(u"./asserts/filenew.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u"./assets/filenew.png", QSize(), QIcon.Normal, QIcon.Off)
         self.actionNew.setIcon(icon)
         self.actionOpen = QAction(TextEdit)
         self.actionOpen.setObjectName(u"actionOpen")
         icon1 = QIcon()
-        icon1.addFile(u"./asserts/fileopen.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon1.addFile(u"./assets/fileopen.png", QSize(), QIcon.Normal, QIcon.Off)
         self.actionOpen.setIcon(icon1)
         self.actionSave = QAction(TextEdit)
         self.actionSave.setObjectName(u"actionSave")
         icon2 = QIcon()
-        icon2.addFile(u"./asserts/filesave.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon2.addFile(u"./assets/filesave.png", QSize(), QIcon.Normal, QIcon.Off)
         self.actionSave.setIcon(icon2)
         self.actionSave_As = QAction(TextEdit)
         self.actionSave_As.setObjectName(u"actionSave_As")
         icon3 = QIcon()
-        icon3.addFile(u"./asserts/filesaveas.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon3.addFile(u"./assets/filesaveas.png", QSize(), QIcon.Normal, QIcon.Off)
         self.actionSave_As.setIcon(icon3)
         self.actionQuit =QAction(TextEdit)
         self.actionQuit.setObjectName("actionQuit")
         icon4 = QIcon()
-        icon4.addFile(u"./asserts/quit.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon4.addFile(u"./assets/quit.png", QSize(), QIcon.Normal, QIcon.Off)
         self.actionQuit.setIcon(icon4)
         self.actionUndo = QAction(TextEdit)
         self.actionUndo.setObjectName(u"actionUndo")
         icon5 = QIcon()
-        icon5.addFile(u"./asserts/editundo.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon5.addFile(u"./assets/editundo.png", QSize(), QIcon.Normal, QIcon.Off)
         self.actionUndo.setIcon(icon5)
         self.actionRedo = QAction(TextEdit)
         self.actionRedo.setObjectName(u"actionRedo")
         icon6 = QIcon()
-        icon6.addFile(u"./asserts/editredo.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon6.addFile(u"./assets/editredo.png", QSize(), QIcon.Normal, QIcon.Off)
         self.actionRedo.setIcon(icon6)
         self.actionCut = QAction(TextEdit)
         self.actionCut.setObjectName(u"actionCut")
         icon7 = QIcon()
-        icon7.addFile(u"./asserts/editcut.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon7.addFile(u"./assets/editcut.png", QSize(), QIcon.Normal, QIcon.Off)
         self.actionCut.setIcon(icon7)
         self.actionCopy = QAction(TextEdit)
         self.actionCopy.setObjectName(u"actionCopy")
         icon8 = QIcon()
-        icon8.addFile(u"./asserts/editcopy.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon8.addFile(u"./assets/editcopy.png", QSize(), QIcon.Normal, QIcon.Off)
         self.actionCopy.setIcon(icon8)
         self.actionPaste = QAction(TextEdit)
         self.actionPaste.setObjectName(u"actionPaste")
         icon9 = QIcon()
-        icon9.addFile(u"./asserts/editpaste.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon9.addFile(u"./assets/editpaste.png", QSize(), QIcon.Normal, QIcon.Off)
         self.actionPaste.setIcon(icon9)
         self.actionAbout = QAction(TextEdit)
         self.actionAbout.setObjectName(u"actionAbout")
@@ -157,12 +159,21 @@ class TextEdit(object):
     # setupUi
 
     def retranslateUi(self, TextEdit):
-        TextEdit.setWindowTitle(self.tr("TextEdit"))
-        self.actionNew.setText(QCoreApplication.translate("TextEdit", u"New", None))
+        """
+        This function gives the graphic names to the actions and the title of our interface and implements the internalizacion on them
+                
+        Inputs:
+            :TextEdit: QMainWindow
+        
+
+        
+        """    
+        TextEdit.setWindowTitle(QApplication.translate("TextEdit", u"TextEdit", None))
+        self.actionNew.setText(QApplication.translate("TextEdit", u"New", None))
 #if QT_CONFIG(shortcut)
         self.actionNew.setShortcut(QApplication.translate("TextEdit", u"Ctrl+N", None, -1))
 #endif // QT_CONFIG(shortcut)
-        self.actionOpen.setText(self.tr("Open..."))
+        self.actionOpen.setText(QApplication.translate("TextEdit", u"Open...", None))
 #if QT_CONFIG(shortcut)
         self.actionOpen.setShortcut(QApplication.translate("TextEdit", u"Ctrl+O", None, -1))
 #endif // QT_CONFIG(shortcut)

@@ -1,5 +1,5 @@
-app module
-==========
+Application
+===================
 
 .. automodule:: app
    :members:

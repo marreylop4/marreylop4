@@ -83,8 +83,10 @@
 <div class="viewcode-block" id="TextEdit"><a class="viewcode-back" href="../../view_main_window.html#views.view_main_window.TextEdit">[docs]</a><span class="k">class</span> <span class="nc">TextEdit</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <div class="viewcode-block" id="TextEdit.setupUi"><a class="viewcode-back" href="../../view_main_window.html#views.view_main_window.TextEdit.setupUi">[docs]</a>    <span class="k">def</span> <span class="nf">setupUi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">TextEdit</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        :This function makes de graphical structure of the interface of our application:</span>
-
+<span class="sd">        This function makes de graphical structure of the interface of our application</span>
+<span class="sd">        </span>
+<span class="sd">        Inputs:</span>
+<span class="sd">            :TextEdit: QMainWindow</span>
 <span class="sd">        </span>
 
 <span class="sd">        </span>
@@ -223,12 +225,21 @@
     <span class="c1"># setupUi</span>
 
 <div class="viewcode-block" id="TextEdit.retranslateUi"><a class="viewcode-back" href="../../view_main_window.html#views.view_main_window.TextEdit.retranslateUi">[docs]</a>    <span class="k">def</span> <span class="nf">retranslateUi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">TextEdit</span><span class="p">):</span>
-        <span class="n">TextEdit</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">actionNew</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">QCoreApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;New&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function gives the graphic names to the actions and the title of our interface and implements the internalizacion on them</span>
+<span class="sd">                </span>
+<span class="sd">        Inputs:</span>
+<span class="sd">            :TextEdit: QMainWindow</span>
+<span class="sd">        </span>
+
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>    
+        <span class="n">TextEdit</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionNew</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;New&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
 <span class="c1">#if QT_CONFIG(shortcut)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">actionNew</span><span class="o">.</span><span class="n">setShortcut</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;Ctrl+N&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
 <span class="c1">#endif // QT_CONFIG(shortcut)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">actionOpen</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="s2">&quot;Open...&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionOpen</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;Open...&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
 <span class="c1">#if QT_CONFIG(shortcut)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">actionOpen</span><span class="o">.</span><span class="n">setShortcut</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;Ctrl+O&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
 <span class="c1">#endif // QT_CONFIG(shortcut)</span>

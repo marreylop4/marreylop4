@@ -1,4 +1,3 @@
-import sys
 import markdown
 from PySide2.QtCore import (QCoreApplication, QDir, QFile, QFileInfo, QMimeData,
                             QMimeDatabase, QUrl, Qt, Slot, QObject, QIODevice, QTranslator)
@@ -19,13 +18,15 @@ from PySide2.QtPrintSupport import (QAbstractPrintDialog, QPrinter,
 
 from views.view_main_window import TextEdit
 
+from controllers.index import IndexWindow
+
 ABOUT = """""".join(["""<p>This is a markdown text editor with preview. The
                      uploaded or created files can be saved in different formats 
                      such as HTML. If you want to know more about markdown here is a link about it:</p>
                      <a href =https://www.markdownguide.org/basic-syntax/#html>Markdown Guide</a> """])
 
 
-MIME_TYPES = ["text/html", "text/markdown", "text/plain"] #para guardarlo de esos tipos
+MIME_TYPES = ["text/html", "text/markdown", "text/plain"]
 
 
 
@@ -33,11 +34,25 @@ MIME_TYPES = ["text/html", "text/markdown", "text/plain"] #para guardarlo de eso
 
 
 class TextEditWindow(QMainWindow, TextEdit):
-    def __init__(self , parent=None):
+    """
+    This class is where the functions will be carried out so that the actions of the interface work
+    
+    Inputs:
+        :QMainWindow: this is the type of page of our interface
+        :TextEdit: inherited from views.view_main_window class
+        
+
+        
+    """    
+    def __init__(self ):
         """
-        this execute the app
-        """
-        super().__init__(parent)
+        This function initializes the methods of this class that sub becesaruis so that the application works correctly       
+        
+        
+
+        
+        """    
+        super().__init__()
         self.setupUi(self)
 
         self.setWindowTitle(QCoreApplication.applicationName())#el titulo de la app
@@ -80,7 +95,14 @@ class TextEditWindow(QMainWindow, TextEdit):
 
         
         
-    def onTextChanged(self):       
+    def onTextChanged(self):     
+        """
+        This function does the preview of the markdown text every 
+        time it detects that the text changes    
+        
+
+        
+        """    
         try:
             html = markdown.markdown(self._text_edit.toPlainText())
         except:
@@ -88,13 +110,25 @@ class TextEditWindow(QMainWindow, TextEdit):
         self.preview.setHtml(html)
         
     def closeEvent(self, e):
+        """
+        This function checks if the generated text has been saved before closing the application
+        
+        Inputs:
+            :e: QCloseEvent
+        
+        """  
         if self.maybe_save():
             e.accept()
         else:
             e.ignore()
 
     def setup_file_actions(self):
+        """
+        This function gives the actions to the "File" menu of our interface
 
+
+        
+        """  
         menu = self.menuFile
 
         new = self.actionNew
@@ -120,7 +154,12 @@ class TextEditWindow(QMainWindow, TextEdit):
         
 
     def setup_edit_actions(self):
-       
+        """
+        This function gives the actions to the "Edit" menu of our interface
+
+
+        
+        """  
 
         undo = self.actionUndo
         undo.triggered.connect(self._text_edit.undo)
@@ -147,13 +186,24 @@ class TextEditWindow(QMainWindow, TextEdit):
 
     
     def load_file(self, f):
-        if not QFile.exists(f):
-            return False
-        file = QFile(f)
-        if not file.open(QFile.ReadOnly):
-            return False
+        """
+        This function loads a file in our application, being able 
+        to load markdown and text type files.
+
+        Inputs:
+            :f: the selected file
+        
+        """ 
+        if self.maybe_save():
+            if not QFile.exists(f):
+                return False
+            file = QFile(f)
+            if not file.open(QFile.ReadOnly):
+                return False
 
         data = file.readAll()
+        file_info= QFileInfo(file)
+        self.set_current_file_format( file_info.suffix())
         db = QMimeDatabase()
         mime_type_name = db.mimeTypeForFileNameAndData(f, data).name()
         text = data.data().decode('utf8')
@@ -166,7 +216,14 @@ class TextEditWindow(QMainWindow, TextEdit):
         return True
 
     def maybe_save(self):
-        if not self._text_edit.document().isModified():
+        """
+        This function checks if the document has had a modification 
+        that has not been saved and gives you the option to do so
+
+
+        
+        """ 
+        if not self._text_edit.document().isModified() :
             return True
 
         ret = QMessageBox.warning(self, QCoreApplication.applicationName(),
@@ -181,6 +238,14 @@ class TextEditWindow(QMainWindow, TextEdit):
         return True
 
     def set_current_file_name(self, fileName):
+        """
+        This function sets the name of the file (it is called in several functions)
+
+        Inputs:
+            :fileName: the file name
+
+        
+        """ 
         self._file_name = fileName
         self._text_edit.document().setModified(False)
 
@@ -188,15 +253,40 @@ class TextEditWindow(QMainWindow, TextEdit):
         app_name = QCoreApplication.applicationName()
         self.setWindowTitle(f"{shown_name}[*] - {app_name}")
         self.setWindowModified(False)
+        
+    def set_current_file_format(self, fileFormat):
+        """
+        This function sets the format of the file (it is called in several functions)
 
+        Inputs:
+            :fileFormat: the file format
+        
+        """ 
+        self._file_format = fileFormat
+        self._text_edit.document().setModified(False)
+
+        
     @Slot()
     def file_new(self):
+        """
+        This function deletes everything that is in the editor if 
+        the previous one has been saved or discarded and thus be able to start a new one
+
+        
+        """ 
         if self.maybe_save():
             self._text_edit.clear()
             self.set_current_file_name("")
+            
 
     @Slot()
     def file_open(self):
+        """
+        This function opens the files that we have saved on our device to 
+        be able to edit them with the application
+
+
+        """ 
         file_dialog = QFileDialog(self, "Open File...")
         file_dialog.setAcceptMode(QFileDialog.AcceptOpen)
         file_dialog.setFileMode(QFileDialog.ExistingFile)
@@ -212,12 +302,19 @@ class TextEditWindow(QMainWindow, TextEdit):
 
     @Slot()
     def file_save(self):
+        """
+        This function saves all the elements of the file generated
+        or uploaded and modified in our application
+
+
+        
+        """ 
         if not self._file_name or self._file_name.startswith(":/"):
             return self.file_save_as()
 
         writer = QTextDocumentWriter(self._file_name)
        
-        if self.format == "html":
+        if self._file_format == "html":
             document = markdown.markdown(self._text_edit.document().toPlainText())           
             
             with open(self._file_name, 'w') as f:
@@ -247,6 +344,13 @@ class TextEditWindow(QMainWindow, TextEdit):
         
     @Slot()
     def file_save_as(self):
+        """
+        This function saves all the elements of the file generated
+        or loaded and modified in our application, being able to give it the format and name you want.
+
+
+        
+        """ 
         file_dialog = QFileDialog(self, "Save as...")
         file_dialog.setAcceptMode(QFileDialog.AcceptSave)
 
@@ -258,7 +362,7 @@ class TextEditWindow(QMainWindow, TextEdit):
         fn = file_dialog.selectedFiles()[0]
         self.set_current_file_name(fn)
         file_info= QFileInfo(fn)
-        self.format = file_info.suffix()
+        self.set_current_file_format( file_info.suffix())
         return self.file_save()
            
 
@@ -266,13 +370,20 @@ class TextEditWindow(QMainWindow, TextEdit):
 
     @Slot()
     def clipboard_data_changed(self):
+        """
+        This function takes what is saved in the clipboard and puts it in what the paste action can do
+
+
+        
+        """ 
         md = QGuiApplication.clipboard().mimeData()
         self.actionPaste.setEnabled(md and md.hasText())
 
     @Slot()
     def about(self):
-        message = QMessageBox(self)
-        message.setText(ABOUT)
-        message.setWindowTitle("About")
-        message.exec_()
-        #QMessageBox.about(self, "About", ABOUT)
+        """
+        This function creates a message box with information about what you can do in the application
+        
+        """ 
+        
+        QMessageBox.about(self, "About", ABOUT)

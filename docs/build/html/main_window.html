@@ -75,72 +75,142 @@
 <span id="textedit-controller"></span><h1>TextEdit Controller<a class="headerlink" href="#module-controllers.main_window" title="Permalink to this headline"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="controllers.main_window.TextEditWindow">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">controllers.main_window.</span></span><span class="sig-name descname"><span class="pre">TextEditWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/controllers/main_window.html#TextEditWindow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#controllers.main_window.TextEditWindow" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">controllers.main_window.</span></span><span class="sig-name descname"><span class="pre">TextEditWindow</span></span><a class="reference internal" href="_modules/controllers/main_window.html#TextEditWindow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#controllers.main_window.TextEditWindow" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PySide2.QtWidgets.QMainWindow</span></code>, <a class="reference internal" href="view_main_window.html#views.view_main_window.TextEdit" title="views.view_main_window.TextEdit"><code class="xref py py-class docutils literal notranslate"><span class="pre">views.view_main_window.TextEdit</span></code></a></p>
+<p>This class is where the functions will be carried out so that the actions of the interface work</p>
+<dl class="simple">
+<dt>Inputs:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">QMainWindow</dt>
+<dd class="field-odd"><p>this is the type of page of our interface</p>
+</dd>
+<dt class="field-even">TextEdit</dt>
+<dd class="field-even"><p>inherited from views.view_main_window class</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="controllers.main_window.TextEditWindow.about">
 <span class="sig-name descname"><span class="pre">about</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controllers/main_window.html#TextEditWindow.about"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#controllers.main_window.TextEditWindow.about" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>This function creates a message box with information about what you can do in the application</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="controllers.main_window.TextEditWindow.clipboard_data_changed">
 <span class="sig-name descname"><span class="pre">clipboard_data_changed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controllers/main_window.html#TextEditWindow.clipboard_data_changed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#controllers.main_window.TextEditWindow.clipboard_data_changed" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>This function takes what is saved in the clipboard and puts it in what the paste action can do</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="controllers.main_window.TextEditWindow.closeEvent">
-<span class="sig-name descname"><span class="pre">closeEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PySide2.QtGui.QCloseEvent</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/controllers/main_window.html#TextEditWindow.closeEvent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#controllers.main_window.TextEditWindow.closeEvent" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">closeEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/controllers/main_window.html#TextEditWindow.closeEvent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#controllers.main_window.TextEditWindow.closeEvent" title="Permalink to this definition"></a></dt>
+<dd><p>This function checks if the generated text has been saved before closing the application</p>
+<dl class="simple">
+<dt>Inputs:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">e</dt>
+<dd class="field-odd"><p>QCloseEvent</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="controllers.main_window.TextEditWindow.file_new">
 <span class="sig-name descname"><span class="pre">file_new</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controllers/main_window.html#TextEditWindow.file_new"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#controllers.main_window.TextEditWindow.file_new" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>This function deletes everything that is in the editor if 
+the previous one has been saved or discarded and thus be able to start a new one</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="controllers.main_window.TextEditWindow.file_open">
 <span class="sig-name descname"><span class="pre">file_open</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controllers/main_window.html#TextEditWindow.file_open"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#controllers.main_window.TextEditWindow.file_open" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>This function opens the files that we have saved on our device to 
+be able to edit them with the application</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="controllers.main_window.TextEditWindow.file_save">
 <span class="sig-name descname"><span class="pre">file_save</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controllers/main_window.html#TextEditWindow.file_save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#controllers.main_window.TextEditWindow.file_save" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>This function saves all the elements of the file generated
+or uploaded and modified in our application</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="controllers.main_window.TextEditWindow.file_save_as">
 <span class="sig-name descname"><span class="pre">file_save_as</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controllers/main_window.html#TextEditWindow.file_save_as"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#controllers.main_window.TextEditWindow.file_save_as" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>This function saves all the elements of the file generated
+or loaded and modified in our application, being able to give it the format and name you want.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="controllers.main_window.TextEditWindow.load_file">
 <span class="sig-name descname"><span class="pre">load_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/controllers/main_window.html#TextEditWindow.load_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#controllers.main_window.TextEditWindow.load_file" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>This function loads a file in our application, being able 
+to load markdown and text type files.</p>
+<dl class="simple">
+<dt>Inputs:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">f</dt>
+<dd class="field-odd"><p>the selected file</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="controllers.main_window.TextEditWindow.maybe_save">
 <span class="sig-name descname"><span class="pre">maybe_save</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controllers/main_window.html#TextEditWindow.maybe_save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#controllers.main_window.TextEditWindow.maybe_save" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>This function checks if the document has had a modification 
+that has not been saved and gives you the option to do so</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="controllers.main_window.TextEditWindow.onTextChanged">
 <span class="sig-name descname"><span class="pre">onTextChanged</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controllers/main_window.html#TextEditWindow.onTextChanged"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#controllers.main_window.TextEditWindow.onTextChanged" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>This function does the preview of the markdown text every 
+time it detects that the text changes</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controllers.main_window.TextEditWindow.set_current_file_format">
+<span class="sig-name descname"><span class="pre">set_current_file_format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileFormat</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/controllers/main_window.html#TextEditWindow.set_current_file_format"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#controllers.main_window.TextEditWindow.set_current_file_format" title="Permalink to this definition"></a></dt>
+<dd><p>This function sets the format of the file (it is called in several functions)</p>
+<dl class="simple">
+<dt>Inputs:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">fileFormat</dt>
+<dd class="field-odd"><p>the file format</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="controllers.main_window.TextEditWindow.set_current_file_name">
 <span class="sig-name descname"><span class="pre">set_current_file_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/controllers/main_window.html#TextEditWindow.set_current_file_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#controllers.main_window.TextEditWindow.set_current_file_name" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>This function sets the name of the file (it is called in several functions)</p>
+<dl class="simple">
+<dt>Inputs:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">fileName</dt>
+<dd class="field-odd"><p>the file name</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="controllers.main_window.TextEditWindow.setup_edit_actions">
 <span class="sig-name descname"><span class="pre">setup_edit_actions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controllers/main_window.html#TextEditWindow.setup_edit_actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#controllers.main_window.TextEditWindow.setup_edit_actions" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>This function gives the actions to the “Edit” menu of our interface</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="controllers.main_window.TextEditWindow.setup_file_actions">
 <span class="sig-name descname"><span class="pre">setup_file_actions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controllers/main_window.html#TextEditWindow.setup_file_actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#controllers.main_window.TextEditWindow.setup_file_actions" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>This function gives the actions to the “File” menu of our interface</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="controllers.main_window.TextEditWindow.staticMetaObject">
